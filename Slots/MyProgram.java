@@ -3,6 +3,7 @@ public class MyProgram
 {
     public static void main(String[] args)
     {
+        // This is a new comment!
         Scanner input = new Scanner(System.in);
         double balance = 0.0;
         SlotMachine m1 = new SlotMachine(0, false);
