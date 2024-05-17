@@ -1,8 +1,15 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class Roulette {
+public class Test {
+
     public static void main(String[] args) {
+        int money = 1000;
+        Scanner input = new Scanner(System.in);
+
+        while (money > 0) {
+            
+        }
         int numberBet = -1;
         int[] redNumbers = {1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36};
         int[] blackNumbers = {2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35};
@@ -11,9 +18,9 @@ public class Roulette {
         int[] firstThird = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
         int[] secondThird = {13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24};
         int[] thirdThird = {25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36};
+        int bet;
 
-
-        Scanner input = new Scanner(System.in);
+        
         System.out.println("What would you like to bet on?");
         System.out.println("1. Red");
         System.out.println("2. Black");
@@ -24,13 +31,13 @@ public class Roulette {
         System.out.println("7. Even");
         System.out.println("8. Odd");
         System.out.println("Input a number");
-        int bet = input.nextInt();
+        int betType = input.nextInt();
         
-        if (bet > 8) {
+        if (betType > 8) {
             System.out.println("Invalid Bet!");
         }
 
-        if (bet == 3) {
+        if (betType == 3) {
             System.out.println("What number would you like to bet on?");
             System.out.println("00 is 37");
             numberBet = input.nextInt();
@@ -39,6 +46,15 @@ public class Roulette {
             }
         }
         
+        System.out.println("How much would you like to bet?");
+        System.out.println("You have $" + money);
+        bet = input.nextInt();
+        // if (bet < money) {
+        //     "You do not have enough money to bet that much!"
+        //     break;
+        // }
+
+
         Random wheel = new Random();
        
         
@@ -73,49 +89,53 @@ public class Roulette {
             }
         }
 
-        if (bet == 1) {
+        if (betType == 1) {
             if (isInArray(redNumbers, spinResult)) {
+                money += bet;
                 System.out.println("You Won!");
+                System.out.println("You have $" + money);
             } else {
+                money -= bet;
                 System.out.println("You are a loser!");
+                System.out.println("You have $" + money);
             }
-        } else if (bet == 2) {
+        } else if (betType == 2) {
             if (isInArray(blackNumbers, spinResult)) {
                 System.out.println("You Won!");
             } else {
                 System.out.println("You are a loser!");
             }
-        } else if (bet == 3) {
+        } else if (betType == 3) {
             if (numberBet == spinResult) {
                 System.out.println("You Win!");
             } else {
                 System.out.println("You are a loser!");
             }
-        } else if (bet == 4) {
+        } else if (betType == 4) {
             if (isInArray(firstThird, spinResult)) {
                 System.out.println("You Win!");
             } else {
                 System.out.println("You are a loser!");
             }
-        } else if (bet == 5) {
+        } else if (betType == 5) {
             if (isInArray(secondThird, spinResult)) {
                 System.out.println("You Win!");
             } else{
                 System.out.println("You are a loser!");
             }
-        } else if (bet == 6) {
+        } else if (betType == 6) {
             if (isInArray(thirdThird, spinResult)) {
                 System.out.println("You Win!");
             } else {
                 System.out.println("You are a loser!");
             }
-        } else if (bet == 7) {
+        } else if (betType == 7) {
             if (isInArray(evenNumbers, spinResult)) {
                 System.out.println("You Win!");
             } else {
                 System.out.println("You are a loser!");
             }
-        } else if (bet == 8) {
+        } else if (betType == 8) {
             if (isInArray(oddNumbers, spinResult)) {
                 System.out.println("You Win!");
             } else {
